@@ -9,6 +9,8 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const path = require('path');
+const hpp = require('hpp');
+const helmet = require('helmet');
 
 const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
@@ -31,18 +33,27 @@ db.sequelize.sync()
 
 passportConfig();
 
+// 배포모드일 때
+if(process.env.NODE_ENV === 'production') {
+  app.use(morgan('combined'));
+  app.use(hpp())
+  app.use(helmet())
+} else {
+  app.use(morgan('dev'));
+}
+
 // app.use()의 인자로 들어가는 것들은 "미들웨어" 
 // 주의: 라우터 설정 전에 선언해줘야 함
 // express 서버에 설정 추가(미들웨어)
 // 프론트에서 보낸 req.body 안에 넣어주는 역할
 
-app.use(morgan('dev'));
+
 app.use(cors({
   // access-controll-allow-origin: 허용
   // 예외: 
   // access-control-allow-credentials: true 일 경우에는, 
   // access-controll-allow-origin가 '*' 이면 안됨(보안 정책)
-  origin: 'http://localhost:3060',
+  origin: ['http://localhost:3060', 'nodebird.com'],
   // origin: true,
   // 로그인 데이터, 쿠키가 필요함, 
   // 도메인이 다르면 cookie가 전달이 안됨 
