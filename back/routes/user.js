@@ -213,8 +213,8 @@ router.get('/:id', async (req, res, next) => {
       }]
     })
 
-    console.log("req.params.userId :: ", req.params.id);
-    console.log('fullUserWithoutPassword :: ', fullUserWithoutPassword);
+    // console.log("req.params.userId :: ", req.params.id);
+    // console.log('fullUserWithoutPassword :: ', fullUserWithoutPassword);
 
     if(fullUserWithoutPassword) {
       const data = fullUserWithoutPassword.toJSON();
