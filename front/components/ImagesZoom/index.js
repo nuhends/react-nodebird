@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Slick from 'react-slick';
 import PropTypes from 'prop-types';
 
-import { backUrl } from '../config/config';
+import { backUrl } from '../../config/config';
 import { Overlay, Header, SlickWrapper, ImgWrapper, Indicator, Global, CloseButton } from './styles';
 
 const initialSlideIndex = 0;
