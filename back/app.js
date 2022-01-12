@@ -35,9 +35,9 @@ passportConfig();
 
 // 배포모드일 때
 if(process.env.NODE_ENV === 'production') {
+  app.use(hpp());
+  app.use(helmet());
   app.use(morgan('combined'));
-  app.use(hpp())
-  app.use(helmet())
 } else {
   app.use(morgan('dev'));
 }
