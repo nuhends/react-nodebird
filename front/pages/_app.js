@@ -1,0 +1,24 @@
+// 페이지들의 공통적인 것들을 추가
+import React from 'react';
+import Head from 'next/head';
+import PropTypes from 'prop-types';
+import wrapper from '../store/configureStore';
+
+import 'antd/dist/antd.css';
+
+const NodeBird = ({ Component }) => {
+  return (
+    <>
+      <Head>
+        <title>NodeBird</title>
+      </Head>
+      <Component />
+    </>
+  );
+}
+
+NodeBird.propTypes = {
+  Component: PropTypes.elementType.isRequired,
+};
+
+export default wrapper.withRedux(NodeBird);
