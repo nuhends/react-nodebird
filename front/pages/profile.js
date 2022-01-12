@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useSelector } from  'react-redux';
 import useSWR from 'swr';
 
+import { backUrl } from '../config/config';
 import AppLayout from '../components/AppLayout';
 import NickNameEditForm from '../components/NickNameEditForm';
 import FollowList from '../components/FollowList';
@@ -16,8 +17,8 @@ const Profile = () => {
   const [followersLimit, setFollowersLimit] = useState(3);
   const [followingsLimit, setFollowingsLimit] = useState(3);
   
-  const { data: followersData, error: followerError } = useSWR(`http://localhost:3065/user/followers?limit=${followersLimit}`, fetcher);
-  const { data: followingsData, error: followingError } = useSWR(`http://localhost:3065/user/followings?limit=${followingsLimit}`, fetcher);
+  const { data: followersData, error: followerError } = useSWR(`${backUrl}/user/followers?limit=${followersLimit}`, fetcher);
+  const { data: followingsData, error: followingError } = useSWR(`${backUrl}/user/followings?limit=${followingsLimit}`, fetcher);
   
   useEffect(() => {
     if(!(me && me.id)) {

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Form, Input } from 'antd';
 import { UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE, ADD_POST_REQUEST } from '../reducers/post'
+import { backUrl } from '../config/config';
 import useInput from '../hooks/useInput';
 
 const PostForm = () => {
@@ -105,7 +106,7 @@ const PostForm = () => {
         {imagePaths.map((v, i) => (
           <div key={v} style={{ display: 'inline-block' }}>
             <img 
-              src={`http://localhost:3065/${v}`} 
+              src={`${backUrl}/${v}`} 
               style={{ width: '200px' }} 
               alt={v} 
             />
