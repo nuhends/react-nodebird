@@ -53,7 +53,7 @@ app.use(cors({
   // 예외: 
   // access-control-allow-credentials: true 일 경우에는, 
   // access-controll-allow-origin가 '*' 이면 안됨(보안 정책)
-  origin: ['http://localhost:3060', 'nodebird.com'],
+  origin: ['http://localhost:3060', 'nodebird.com', 'http://13.125.175.102'],
   // origin: true,
   // 로그인 데이터, 쿠키가 필요함, 
   // 도메인이 다르면 cookie가 전달이 안됨 
